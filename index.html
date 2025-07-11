@@ -514,7 +514,7 @@
         .upload-container {
             width: 90%;
             max-width: 700px;
-            padding: 2rem;
+            padding: 2rem 2rem 2rem 2rem;
             text-align: center;
             position: relative;
         }
@@ -595,10 +595,24 @@
             animation: fadeIn 0.5s ease;
         }
 
+        /* Updated CSS for the analysis results section */
+        #analysis-results {
+            max-height: 80vh;
+            /* Limit height to 80% of viewport */
+            overflow-y: auto;
+            /* Add scroll if content exceeds height */
+            padding: 1rem;
+            width: 100%;
+        }
+
         .result-card {
             margin-top: 1rem;
-            padding: 1.5rem;
+            padding: 1.25rem;
+            /* Slightly reduced padding for mobile */
             text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            /* Optional: better visibility */
+            border-radius: 8px;
         }
 
         .result-card h3 {
@@ -606,15 +620,77 @@
             align-items: center;
             gap: 0.5rem;
             margin-bottom: 1rem;
+            font-size: clamp(1rem, 4vw, 1.25rem);
+            /* Responsive font size */
+        }
+
+        .result-card p {
+            margin: 0.75rem 0;
+            font-size: clamp(0.875rem, 3vw, 1rem);
+            /* Responsive font size */
         }
 
         .result-card ul {
             list-style-position: inside;
-            padding-left: 1rem;
+            padding-left: 0.5rem;
+            /* Reduced padding for mobile */
+            margin: 0.75rem 0;
         }
 
         .result-card li {
             margin-bottom: 0.5rem;
+            font-size: clamp(0.875rem, 3vw, 1rem);
+            /* Responsive font size */
+            word-break: break-word;
+            /* Prevent long words from overflowing */
+        }
+
+        .result-note {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 1rem !important;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            #upload-container {
+                width: 95vw;
+                /* Use most of the screen width */
+                max-height: 90vh;
+                /* Slightly more height on mobile */
+            }
+
+            #analysis-results {
+                max-height: 75vh;
+                /* More space for content */
+                padding: 0.5rem;
+            }
+
+            .result-card {
+                padding: 1rem;
+                margin-top: 0.75rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                /* Stack buttons vertically on mobile */
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                /* Full width buttons on mobile */
+            }
+        }
+
+        #analysis-results::-webkit-scrollbar {
+            width: 4px;
+            background: transparent;
+        }
+
+        #analysis-results::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
         }
 
         .result-note {
