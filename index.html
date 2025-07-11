@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +31,37 @@
         header {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(0, 99, 124, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #e2e8f0;
+            background: #000000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: #000000 !important;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
@@ -86,9 +118,9 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 41, 59, 0.9)), 
-                        radial-gradient(circle at 20% 80%, rgba(0, 99, 124, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 41, 59, 0.9)),
+                radial-gradient(circle at 20% 80%, rgba(0, 99, 124, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -617,6 +649,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -627,6 +660,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -665,6 +699,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -676,7 +711,7 @@
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#how-it-works"><i class="fas fa-cogs"></i> How It Works</a></li>
                 <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
-                <li><a href="#demo"><i class="fas fa-play-circle"></i> Demo</a></li>
+                <li><a href="#demo"><i class="fas fa-play-circle"></i> Upload X-ray</a></li>
             </ul>
         </nav>
     </header>
@@ -686,8 +721,9 @@
         <div class="container">
             <div class="hero-content">
                 <h1><i class="fas fa-brain"></i> AI-Powered X-Ray Analysis at Your Fingertips</h1>
-                <p>Upload your X-ray images and get instant AI-powered diagnosis for fractures, lung diseases, and more medical conditions with cutting-edge accuracy.</p>
-                
+                <p>Upload your X-ray images and get instant AI-powered diagnosis for fractures, lung diseases, and more
+                    medical conditions with cutting-edge accuracy.</p>
+
                 <div class="hero-buttons">
                     <a href="#demo" class="btn btn-primary">
                         <i class="fas fa-upload"></i> Upload X-Ray
@@ -734,17 +770,20 @@
                 <div class="step">
                     <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     <h3>Upload X-ray</h3>
-                    <p>Simply drag and drop your X-ray image or click to upload. Our system supports all major image formats and ensures your data remains secure.</p>
+                    <p>Simply drag and drop your X-ray image or click to upload. Our system supports all major image
+                        formats and ensures your data remains secure.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fas fa-robot"></i></div>
                     <h3>AI Analyzes</h3>
-                    <p>Our advanced AI model, trained on millions of X-ray images, analyzes your upload in seconds using state-of-the-art deep learning algorithms.</p>
+                    <p>Our advanced AI model, trained on millions of X-ray images, analyzes your upload in seconds using
+                        state-of-the-art deep learning algorithms.</p>
                 </div>
                 <div class="step">
                     <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
                     <h3>Get Diagnosis</h3>
-                    <p>Receive detailed analysis results including detected conditions, confidence levels, and recommended treatment options from medical professionals.</p>
+                    <p>Receive detailed analysis results including detected conditions, confidence levels, and
+                        recommended treatment options from medical professionals.</p>
                 </div>
             </div>
         </div>
@@ -758,22 +797,26 @@
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                     <h3>Lightning Fast Results</h3>
-                    <p>Get instant analysis results in under 30 seconds. Our optimized AI processes X-rays with lightning speed without compromising accuracy.</p>
+                    <p>Get instant analysis results in under 30 seconds. Our optimized AI processes X-rays with
+                        lightning speed without compromising accuracy.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-brain"></i></div>
                     <h3>Smart Learning AI</h3>
-                    <p>Our AI continuously learns from new data and expert feedback, improving its diagnostic accuracy and expanding its knowledge base daily.</p>
+                    <p>Our AI continuously learns from new data and expert feedback, improving its diagnostic accuracy
+                        and expanding its knowledge base daily.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Secure & Private</h3>
-                    <p>Your medical data is protected with enterprise-grade encryption. We comply with HIPAA and other medical privacy regulations.</p>
+                    <p>Your medical data is protected with enterprise-grade encryption. We comply with HIPAA and other
+                        medical privacy regulations.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon"><i class="fas fa-search-plus"></i></div>
                     <h3>Multi-Disease Detection</h3>
-                    <p>Detect fractures, pneumonia, tuberculosis, and dozens of other conditions across different body parts with high precision.</p>
+                    <p>Detect fractures, pneumonia, tuberculosis, and dozens of other conditions across different body
+                        parts with high precision.</p>
                 </div>
             </div>
         </div>
@@ -783,9 +826,9 @@
     <section class="section section-dark" id="demo">
         <div class="container">
             <div class="demo-container">
-                <h2 class="section-title">Try the Demo</h2>
-                <p>Upload a sample X-ray to see XrayBotix in action</p>
-                
+                <h2 class="section-title">Upload Your X-ray</h2>
+                <p>Upload Your X-ray to see XrayBotix in action</p>
+
                 <div class="upload-area" id="uploadArea">
                     <div class="upload-icon"><i class="fas fa-file-medical"></i></div>
                     <h3>Drop your X-ray here or click to upload</h3>
@@ -807,7 +850,8 @@
                             <li>Follow-up chest X-ray in 2-3 weeks</li>
                         </ul>
                         <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
-                            <strong>Note:</strong> This is a demo result. Always consult with a healthcare professional for actual diagnosis and treatment.
+                            <strong>Note:</strong> This is a demo result. Always consult with a healthcare professional
+                            for actual diagnosis and treatment.
                         </p>
                     </div>
                 </div>
@@ -821,7 +865,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
-                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more accessible and accurate.</p>
+                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more
+                        accessible and accurate.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -842,892 +887,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 XrayBotix. All rights reserved.</p>
+                <p>&copy; 2025 XrayBotix. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XrayBotix</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #e2e8f0;
-            background: #000000;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 99, 124, 0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #00637c;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #cbd5e1;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: #00637c;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #00637c, #004d61);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(30, 41, 59, 0.9)), 
-                        radial-gradient(circle at 20% 80%, rgba(0, 99, 124, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(0,99,124,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="800" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #00637c, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.5s forwards;
-        }
-
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.8s forwards;
-            color: #cbd5e1;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.1s forwards;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #00637c, #004d61);
-            color: white;
-            box-shadow: 0 4px 15px rgba(0, 99, 124, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 99, 124, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(0, 99, 124, 0.1);
-            color: #00637c;
-            border: 2px solid rgba(0, 99, 124, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 99, 124, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 99, 124, 0.2);
-        }
-
-        .xray-selector {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(20px);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid rgba(0, 99, 124, 0.3);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 1.4s forwards;
-        }
-
-        .xray-selector h3 {
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            color: #00637c;
-        }
-
-        .xray-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-        }
-
-        .xray-option {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .xray-option:hover {
-            background: rgba(0, 99, 124, 0.1);
-        }
-
-        .xray-option input[type="radio"] {
-            accent-color: #00637c;
-            transform: scale(1.2);
-        }
-
-        .xray-option label {
-            cursor: pointer;
-            font-weight: 500;
-            color: #cbd5e1;
-        }
-
-        /* Sections */
-        .section {
-            padding: 6rem 0;
-            position: relative;
-        }
-
-        .section-dark {
-            background: #1e293b;
-        }
-
-        .section-darker {
-            background: #000000;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, #00637c, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2.5rem;
-            border-radius: 16px;
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid rgba(0, 99, 124, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .step::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 99, 124, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .step:hover::before {
-            opacity: 1;
-        }
-
-        .step:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 99, 124, 0.2);
-            border-color: rgba(0, 99, 124, 0.4);
-        }
-
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #00637c, #004d61);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 4px 20px rgba(0, 99, 124, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        .step h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: #00637c;
-            position: relative;
-            z-index: 2;
-        }
-
-        .step p {
-            color: #cbd5e1;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(0, 99, 124, 0.2);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 99, 124, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 99, 124, 0.2);
-            border-color: rgba(0, 99, 124, 0.4);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #00637c, #004d61);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            color: white;
-            box-shadow: 0 4px 20px rgba(0, 99, 124, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #00637c;
-            position: relative;
-            z-index: 2;
-        }
-
-        .feature-card p {
-            color: #cbd5e1;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Demo Section */
-        .demo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .upload-area {
-            border: 2px dashed #00637c;
-            border-radius: 16px;
-            padding: 4rem;
-            margin: 2rem 0;
-            background: rgba(30, 41, 59, 0.5);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .upload-area::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 99, 124, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .upload-area:hover::before {
-            opacity: 1;
-        }
-
-        .upload-area:hover {
-            background: rgba(0, 99, 124, 0.1);
-            border-color: #004d61;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 99, 124, 0.2);
-        }
-
-        .upload-area.dragover {
-            background: rgba(0, 99, 124, 0.15);
-            border-color: #004d61;
-        }
-
-        .upload-icon {
-            font-size: 4rem;
-            color: #00637c;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .upload-area h3 {
-            color: #00637c;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .upload-area p {
-            color: #cbd5e1;
-            position: relative;
-            z-index: 2;
-        }
-
-        .file-input {
-            display: none;
-        }
-
-        .results {
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-top: 2rem;
-            display: none;
-            border: 1px solid rgba(0, 99, 124, 0.3);
-        }
-
-        .results.show {
-            display: block;
-            animation: fadeIn 0.5s ease-out;
-        }
-
-        .diagnosis {
-            background: rgba(15, 23, 42, 0.8);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #00637c;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .diagnosis h3 {
-            color: #00637c;
-            margin-bottom: 1rem;
-        }
-
-        .diagnosis h4 {
-            color: #06b6d4;
-            margin-bottom: 0.5rem;
-        }
-
-        .treatments {
-            background: rgba(15, 23, 42, 0.8);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: left;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .treatments h4 {
-            margin-bottom: 1rem;
-            color: #00637c;
-        }
-
-        .treatments ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .treatments li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(0, 99, 124, 0.2);
-            color: #cbd5e1;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .treatments li::before {
-            content: '•';
-            color: #00637c;
-            position: absolute;
-            left: 0;
-            font-size: 1.2rem;
-        }
-
-        .treatments li:last-child {
-            border-bottom: none;
-        }
-
-        /* Footer */
-        footer {
-            background: #000000;
-            color: white;
-            padding: 4rem 0 2rem;
-            border-top: 1px solid rgba(0, 99, 124, 0.2);
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1.5rem;
-            color: #00637c;
-            font-size: 1.3rem;
-        }
-
-        .footer-section p {
-            color: #cbd5e1;
-            margin-bottom: 0.5rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #00637c, #004d61);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 99, 124, 0.3);
-        }
-
-        .social-icon:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 99, 124, 0.4);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(0, 99, 124, 0.2);
-            color: #cbd5e1;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .xray-options {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fa-solid fa-suitcase-medical"></i> XrayBotix
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="#how-it-works"><i class="fas fa-cogs"></i> How It Works</a></li>
-                <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
-                <li><a href="#demo"><i class="fas fa-play-circle"></i> Demo</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1><i class="fas fa-brain"></i> AI-Powered X-Ray Analysis at Your Fingertips</h1>
-                <p>Upload your X-ray images and get instant AI-powered diagnosis for fractures, lung diseases, and more medical conditions with cutting-edge accuracy.</p>
-                
-                <div class="hero-buttons">
-                    <a href="#demo" class="btn btn-primary">
-                        <i class="fas fa-upload"></i> Upload X-Ray
-                    </a>
-                    <a href="#demo" class="btn btn-secondary">
-                        <i class="fas fa-eye"></i> See Demo
-                    </a>
-                </div>
-
-                <div class="xray-selector">
-                    <h3><i class="fas fa-list-check"></i> Select X-Ray Type:</h3>
-                    <div class="xray-options">
-                        <div class="xray-option">
-                            <input type="radio" id="chest" name="xray-type" value="chest" checked>
-                            <label for="chest">Chest</label>
-                        </div>
-                        <div class="xray-option">
-                            <input type="radio" id="hand" name="xray-type" value="hand">
-                            <label for="hand">Hand</label>
-                        </div>
-                        <div class="xray-option">
-                            <input type="radio" id="leg" name="xray-type" value="leg">
-                            <label for="leg">Leg</label>
-                        </div>
-                        <div class="xray-option">
-                            <input type="radio" id="spine" name="xray-type" value="spine">
-                            <label for="spine">Spine</label>
-                        </div>
-                        <div class="xray-option">
-                            <input type="radio" id="dental" name="xray-type" value="dental">
-                            <label for="dental">Dental</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section section-dark" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <h3>Upload X-ray</h3>
-                    <p>Simply drag and drop your X-ray image or click to upload. Our system supports all major image formats and ensures your data remains secure.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-robot"></i></div>
-                    <h3>AI Analyzes</h3>
-                    <p>Our advanced AI model, trained on millions of X-ray images, analyzes your upload in seconds using state-of-the-art deep learning algorithms.</p>
-                </div>
-                <div class="step">
-                    <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
-                    <h3>Get Diagnosis</h3>
-                    <p>Receive detailed analysis results including detected conditions, confidence levels, and recommended treatment options from medical professionals.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="section section-darker" id="features">
-        <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-                    <h3>Lightning Fast Results</h3>
-                    <p>Get instant analysis results in under 30 seconds. Our optimized AI processes X-rays with lightning speed without compromising accuracy.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Smart Learning AI</h3>
-                    <p>Our AI continuously learns from new data and expert feedback, improving its diagnostic accuracy and expanding its knowledge base daily.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>Secure & Private</h3>
-                    <p>Your medical data is protected with enterprise-grade encryption. We comply with HIPAA and other medical privacy regulations.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-search-plus"></i></div>
-                    <h3>Multi-Disease Detection</h3>
-                    <p>Detect fractures, pneumonia, tuberculosis, and dozens of other conditions across different body parts with high precision.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Section -->
-    <section class="section section-dark" id="demo">
-        <div class="container">
-            <div class="demo-container">
-                <h2 class="section-title">Try the Demo</h2>
-                <p>Upload a sample X-ray to see XrayBotix in action</p>
-                
-                <div class="upload-area" id="uploadArea">
-                    <div class="upload-icon"><i class="fas fa-file-medical"></i></div>
-                    <h3>Drop your X-ray here or click to upload</h3>
-                    <p>Supports JPG, PNG, DICOM formats</p>
-                    <input type="file" class="file-input" id="fileInput" accept="image/*">
-                </div>
-
-                <div class="results" id="results">
-                    <div class="diagnosis">
-                        <h3><i class="fas fa-search"></i> Predicted Condition</h3>
-                        <h4 id="conditionName">Pneumonia (Left Lung)</h4>
-                        <p>Confidence: 94.2%</p>
-                    </div>
-                    <div class="treatments">
-                        <h4><i class="fas fa-pills"></i> Suggested Treatment Options</h4>
-                        <ul>
-                            <li>Antibiotic therapy (Amoxicillin or Azithromycin)</li>
-                            <li>Rest and increased fluid intake</li>
-                            <li>Follow-up chest X-ray in 2-3 weeks</li>
-                        </ul>
-                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #64748b;">
-                            <strong>Note:</strong> This is a demo result. Always consult with a healthcare professional for actual diagnosis and treatment.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
-                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more accessible and accurate.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fas fa-envelope"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-phone"></i> Contact</h3>
-                    <p><i class="fas fa-envelope"></i> contact@xraybotix.ai</p>
-                    <p><i class="fas fa-phone"></i> 9142921275</p>
-                    <p><i class="fas fa-map-marker-alt"></i> DTU DELHI</p>
-                </div>
-                <div class="footer-section">
-                    <h3><i class="fas fa-book"></i> Resources</h3>
-                    <p><i class="fas fa-file-alt"></i> Research Papers</p>
-                    <p><i class="fas fa-question-circle"></i> FAQ</p>
-                    <p><i class="fas fa-shield-alt"></i> Privacy Policy</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 XrayBotix. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-        <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>MediRay</h3>
-                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more accessible and accurate.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon">📧</a>
-                        <a href="#" class="social-icon">📱</a>
-                        <a href="#" class="social-icon">💼</a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Email: contact@mediray.ai</p>
-                    <p>Phone: 9142921275</p>
-                    <p>Dtu DELHI</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <p>Research Papers</p>
-                    <p>API Documentation</p>
-                    <p>Privacy Policy</p>
-                    <p>Terms of Service</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 MediRay. All rights reserved. | AI-Powered Medical Diagnosis</p>
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Smooth scrolling for navigation links
@@ -1798,9 +963,9 @@
                 const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
                 conditionName.textContent = randomCondition.name;
                 conditionName.nextElementSibling.textContent = `Confidence: ${randomCondition.confidence}`;
-                
+
                 results.classList.add('show');
-                
+
                 uploadArea.innerHTML = `
                     <div class="upload-icon">✅</div>
                     <h3>Analysis Complete</h3>
@@ -1821,4 +986,5 @@
     </script>
 
 </body>
+
 </html>
