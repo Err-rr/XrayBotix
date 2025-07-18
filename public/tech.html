@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XrayBotix-Tech Stack</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .custom-loader {
+            width: 48px;
+            height: 48px;
+            animation: pulseGlow 1.8s infinite;
+            filter: drop-shadow(0 0 7px rgba(43, 186, 72, 0.837));
+        }
+
+
+        .card-grid-effect::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(88, 255, 255, 0.09) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(88, 255, 255, 0.09) 1px, transparent 1px);
+            background-size: 20px 20px;
+            mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+                filter: drop-shadow(0 0 14px rgba(35, 134, 54, 0.9));
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+        }
+
+        :root {
+            --primary-bg: #0d1117;
+            --secondary-bg: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --accent-color: #238636;
+            --accent-hover: #2ea043;
+            --accent-glow: rgba(35, 134, 54, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131a2c;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .fixed-background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(41, 157, 64, 0.353), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(43, 158, 203, 0.484), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #58a6ff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            margin-bottom: 6rem;
+            color: #ffffff;
+            text-shadow: 0 4px 2px rgba(18, 126, 34, 0.503);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 510;
+        }
+
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+        }
+
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.2), rgba(35, 134, 54, 0.2));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.3), rgba(35, 134, 54, 0.3));
+        }
+
+        .home-button i {
+            font-size: 16px;
+        }
+
+
+        .tech-hero {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 4rem;
+        }
+
+        .tech-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tech-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .process-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-card {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            transform: translateX(-100px);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .process-step:nth-child(even) .step-card {
+            transform: translateX(100px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(88, 166, 255, 0.2);
+            border-color: rgba(88, 166, 255, 0.4);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(88, 166, 255, 0.3);
+        }
+
+        .step-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+
+        .step-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .feature-badge {
+            background: rgba(88, 166, 255, 0.1);
+            color: #58a6ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(88, 166, 255, 0.2);
+        }
+
+        .arrow-connector {
+            flex: 0 0 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .arrow-down {
+            position: relative;
+            width: 60px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .arrow-down::before {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 60px;
+            background: linear-gradient(to bottom, #58a6ff, #2ea043);
+            border-radius: 2px;
+        }
+
+        .arrow-down::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-top: 12px solid #2ea043;
+        }
+
+        /* Remove the rotation for even steps - all arrows point down */
+        .process-step:nth-child(even) .arrow-down::before {
+            transform: none;
+            /* Removed rotate(180deg) */
+        }
+
+        .process-step:nth-child(even) .arrow-down::after {
+            transform: none;
+            /* Removed rotate(180deg) */
+            bottom: -5px;
+            /* Reset to default position */
+            top: auto;
+            /* Reset to default */
+        }
+
+        .arrow-animation {
+            animation: arrowPulse 2s infinite;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes arrowPulse {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* Animation delays */
+        .process-step:nth-child(1) .step-card {
+            animation-delay: 0.2s;
+        }
+
+        .process-step:nth-child(2) .step-card {
+            animation-delay: 0.4s;
+        }
+
+        .process-step:nth-child(3) .step-card {
+            animation-delay: 0.6s;
+        }
+
+        .process-step:nth-child(4) .step-card {
+            animation-delay: 0.8s;
+        }
+
+        .process-step:nth-child(5) .step-card {
+            animation-delay: 1.0s;
+        }
+
+        .process-step:nth-child(6) .step-card {
+            animation-delay: 1.2s;
+        }
+
+        /* Hide arrow connector for the last step */
+        .process-step:last-child .arrow-connector {
+            display: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .tech-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+                gap: 1rem;
+            }
+
+            .process-step:nth-child(even) {
+                flex-direction: column !important;
+            }
+
+            .step-card {
+                transform: translateY(50px) !important;
+                animation: slideInUp 0.8s ease forwards !important;
+            }
+
+            .arrow-connector {
+                flex: 0 0 60px;
+                /* Reduced from 80px to 60px */
+                height: 60px;
+                /* Reduced from 80px to 60px */
+            }
+
+            .arrow-down {
+                width: 40px;
+                height: 60px;
+                /* Reduced from 80px to 60px */
+            }
+
+            .arrow-down::before {
+                height: 40px;
+                /* Reduced from 60px to 40px */
+            }
+
+            .arrow-down::after {
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 8px solid #2ea043;
+            }
+
+            .step-features {
+                justify-content: center;
+            }
+        }
+
+        @keyframes slideInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+
+        .tech-icon {
+            position: absolute;
+            opacity: 0.05;
+            animation: float 20s infinite linear;
+            font-size: 2rem;
+            color: #58a6ff;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        footer {
+            background: rgba(4, 23, 8, 0.57);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 1rem 1rem 0 0;
+            margin-top: 9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.5rem;
+            margin: -0.3rem -0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .footer-section a:hover i {
+            transform: scale(1.1);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-color), #1e3a8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px var(--accent-glow);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .floating-bg .float-icon {
+            position: absolute;
+            width: 60px;
+            opacity: 0.15;
+            animation: floatUp 25s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+            transform: translateY(0);
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.05;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0.01;
+            }
+        }
+
+        .float-icon {
+            position: absolute;
+            opacity: 0.03;
+            user-select: none;
+            will-change: transform;
+            animation-name: floatUp;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(var(--scale));
+                opacity: var(--opacity);
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(var(--scale));
+                opacity: 0;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-background-gradient"></div>
+
+    <div class="floating-bg" id="floating-bg"></div>
+
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+        Home
+    </a>
+
+    <div class="container">
+        <div class="tech-hero">
+            <h1>Technical Process Flow</h1>
+            <p>Advanced medical image analysis powered by machine learning and AI-driven diagnosis with comprehensive
+                reporting system</p>
+        </div>
+
+        <div class="process-flow">
+            <!-- Step 1: Image Upload -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h3 class="step-title">User Image Upload</h3>
+                    <p class="step-description">
+                        Secure image upload system with drag-and-drop functionality. Supports multiple medical image
+                        formats including DICOM, JPEG, PNG, and TIFF.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">Multi-format Support</span>
+                        <span class="feature-badge">Secure Upload</span>
+                        <span class="feature-badge">Progress Tracking</span>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-down arrow-animation"></div>
+                </div>
+            </div>
+
+            <!-- Step 2: Image Validation -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="step-title">Image Validation</h3>
+                    <p class="step-description">
+                        Comprehensive validation pipeline checking image quality, format compatibility, and medical
+                        relevance. Ensures optimal processing conditions.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">Quality Check</span>
+                        <span class="feature-badge">Format Validation</span>
+                        <span class="feature-badge">Error Handling</span>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-down arrow-animation"></div>
+                </div>
+            </div>
+
+            <!-- Step 3: AI Model Processing -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="step-title">AI Model Analysis</h3>
+                    <p class="step-description">
+                        Pre-trained supervised classifier models analyze the medical images using deep learning
+                        algorithms. Multiple specialized models for different medical conditions.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">Deep Learning</span>
+                        <span class="feature-badge">Multi-Model</span>
+                        <span class="feature-badge">Real-time Processing</span>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-down arrow-animation"></div>
+                </div>
+            </div>
+
+            <!-- Step 4: Condition Detection -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                    <h3 class="step-title">Condition Detection</h3>
+                    <p class="step-description">
+                        Advanced pattern recognition identifies potential medical conditions with precise localization
+                        and classification. Provides detailed diagnostic insights.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">Pattern Recognition</span>
+                        <span class="feature-badge">Localization</span>
+                        <span class="feature-badge">Classification</span>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-down arrow-animation"></div>
+                </div>
+            </div>
+
+            <!-- Step 5: Gemini API Integration -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <div class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="step-title">Gemini API Processing</h3>
+                    <p class="step-description">
+                        Gemini API generates comprehensive reports using detected conditions in predefined prompts.
+                        Accesses verified medical databases for accurate information.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">AI Generated Reports</span>
+                        <span class="feature-badge">Medical Database</span>
+                        <span class="feature-badge">Evidence-Based</span>
+                    </div>
+                </div>
+                <div class="arrow-connector">
+                    <div class="arrow-down arrow-animation"></div>
+                </div>
+            </div>
+
+            <!-- Step 6: Results & Analysis -->
+            <div class="process-step">
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="step-title">Results & Analysis</h3>
+                    <p class="step-description">
+                        Final analysis with confidence scores, detailed medical reports, and specialist recommendations.
+                        Interactive visualizations and downloadable reports.
+                    </p>
+                    <div class="step-features">
+                        <span class="feature-badge">Confidence Scoring</span>
+                        <span class="feature-badge">Specialist Referral</span>
+                        <span class="feature-badge">Download Reports</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
+                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more
+                        accessible and accurate.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/alt-Anurag/XrayBotix" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="mailto:xraybotix@gmail.com" class="social-icon"><i class="fa fa-envelope"
+                                target="_blank" rel="noopener noreferrer"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin" target="_blank"
+                                rel="noopener noreferrer"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-phone"></i> Contact</h3>
+                    <p><i class="fas fa-envelope"></i> xraybotix@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9971291995</p>
+                    <p><i class="fas fa-map-marker-alt"></i> DTU DELHI</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-book"></i> Resources</h3>
+                    <p><a href="tech.html"><i class="fas fa-file-alt"></i> Tech Stack</a></p>
+                    <p><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></p>
+                    <p><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XrayBotix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("floating-bg");
+
+            const isMobile = window.innerWidth < 768;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+            const NUM_BUBBLES = isMobile ? 25 : isTablet ? 60 : 200;
+
+            const PNG_COUNT = 10;
+            const MIN_DISTANCE = 6;
+            const positions = [];
+
+            for (let i = 0; i < NUM_BUBBLES; i++) {
+                let left;
+                let tooClose;
+                let attempts = 0;
+
+                do {
+                    tooClose = false;
+                    left = Math.random() * 100;
+                    for (const pos of positions) {
+                        if (Math.abs(pos - left) < MIN_DISTANCE) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (tooClose && attempts < 20);
+
+                positions.push(left);
+
+                const img = document.createElement("img");
+                const imgNum = Math.floor(Math.random() * PNG_COUNT) + 1;
+
+                const baseSize = isMobile ? 25 : 20;
+                const size = Math.floor(Math.random() * 15 + baseSize); // Slightly larger on mobile
+                const delay = Math.random() * 30;
+                const duration = Math.random() * 9 + 22;
+                const scale = (Math.random() * 0.5 + 0.7).toFixed(2);
+                const opacity = (Math.random() * 0.15 + 0.05).toFixed(3);
+
+                img.src = `pngs_bg/${imgNum}.png`;
+                img.classList.add("float-icon");
+                img.style.width = `${size}px`;
+                img.style.left = `${left}%`;
+                img.style.top = `${Math.random() * 100}%`;
+                img.style.animationDuration = `${duration}s`;
+                img.style.animationDelay = `-${Math.random() * duration}s`;
+                img.style.setProperty("--scale", scale);
+                img.style.setProperty("--opacity", opacity);
+
+                container.appendChild(img);
+            }
+        });
+    </script>
+    <script>
+        // Add smooth scrolling animation trigger
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.step-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Medical X-ray Analysis</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .custom-loader {
+            width: 48px;
+            height: 48px;
+            animation: pulseGlow 1.8s infinite;
+            filter: drop-shadow(0 0 7px rgba(43, 186, 72, 0.837));
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+                filter: drop-shadow(0 0 14px rgba(35, 134, 54, 0.9));
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+        }
+
+        :root {
+            --primary-bg: #0d1117;
+            --secondary-bg: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --accent-color: #238636;
+            --accent-hover: #2ea043;
+            --accent-glow: rgba(35, 134, 54, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131a2c;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .fixed-background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(41, 157, 64, 0.353), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(43, 158, 203, 0.484), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #58a6ff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            margin-bottom: 6rem;
+            color: #ffffff;
+            text-shadow: 0 4px 2px rgba(18, 126, 34, 0.503);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 510;
+        }
+
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.2), rgba(35, 134, 54, 0.2));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.3), rgba(35, 134, 54, 0.3));
+        }
+
+        .home-button i {
+            font-size: 16px;
+        }
+
+        .privacy-hero {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 3rem;
+        }
+
+        .privacy-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .privacy-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .privacy-content {
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .float-icon {
+            position: absolute;
+            opacity: 0.03;
+            user-select: none;
+            will-change: transform;
+            animation-name: floatUp;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(var(--scale));
+                opacity: var(--opacity);
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(var(--scale));
+                opacity: 0;
+            }
+        }
+
+        .privacy-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(88, 166, 255, 0.2);
+        }
+
+        .privacy-content h2 {
+            font-size: 1.8rem;
+            color: #77acea;
+            margin-bottom: 1rem;
+            text-align: left;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .privacy-content h3 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .privacy-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .privacy-content ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-content li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .warning {
+            color: #f85149;
+            font-weight: 500;
+        }
+
+        .important-note {
+            background: rgba(248, 81, 73, 0.1);
+            border-left: 4px solid #f85149;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .important-note:hover {
+            background: rgba(248, 81, 73, 0.15);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            background: rgba(88, 166, 255, 0.1);
+            border-left: 4px solid #58a6ff;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            background: rgba(88, 166, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .home-button {
+                top: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .privacy-hero {
+                margin-top: 70px;
+            }
+
+            .privacy-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .privacy-content {
+                padding: 2rem;
+            }
+
+            .privacy-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .privacy-content ul {
+                margin-left: 1.5rem;
+            }
+        }
+
+        footer {
+            background: rgba(4, 23, 8, 0.57);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 1rem 1rem 0 0;
+            margin-top: 9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.5rem;
+            margin: -0.3rem -0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .footer-section a:hover i {
+            transform: scale(1.1);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-color), #1e3a8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px var(--accent-glow);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-background-gradient"></div>
+    <div class="floating-bg" id="floating-bg"></div>
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+        Home
+    </a>
+
+    <div class="container">
+        <div class="privacy-hero">
+            <h1>Privacy Policy</h1>
+            <p>Your privacy and medical data security are our top priorities. Learn how we protect your X-ray images and
+                personal information.</p>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-info-circle"></i>&nbsp;Overview</h2>
+            <p>This Privacy Policy explains how we collect, use, protect, and handle your personal information and
+                medical data when you use our X-ray analysis service. We are committed to maintaining the highest
+                standards of data protection and medical privacy.</p>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-database"></i>&nbsp;Information We Collect</h2>
+
+            <h3>Medical Information</h3>
+            <ul>
+                <li><span class="highlight">X-ray Images:</span> Digital X-ray images you upload for analysis</li>
+                <li><span class="highlight">Analysis Results:</span> Fracture detection results and disease
+                    identification</li>
+                <li><span class="highlight">Medical Recommendations:</span> Treatment suggestions and next steps
+                    provided by our system</li>
+            </ul>
+
+            <h3>Technical Information</h3>
+            <ul>
+                <li>IP address and device information</li>
+                <li>Browser type and version</li>
+                <li>Upload timestamps and session data</li>
+                <li>System performance metrics</li>
+            </ul>
+
+            <div class="important-note">
+                <p><strong>Important:</strong> We <span class="warning">DON'T</span> collect or store personally
+                    identifiable information such as names, addresses, or medical record numbers unless explicitly
+                    provided by you.</p>
+            </div>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-shield-alt"></i>&nbsp;How We Use Your Information</h2>
+            <p>Your medical data is used exclusively for the following purposes:</p>
+            <ul>
+                <li><span class="highlight">Medical Analysis:</span> Processing X-ray images to detect fractures and
+                    diseases</li>
+                <li><span class="highlight">Treatment Recommendations:</span> Providing appropriate medical guidance and
+                    next steps</li>
+                <li><span class="highlight">Service Improvement:</span> Enhancing our AI algorithms and diagnostic
+                    accuracy</li>
+                <li><span class="highlight">Quality Assurance:</span> Ensuring the reliability and safety of our
+                    analysis system</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-lock"></i>&nbsp;Data Protection & Security</h2>
+            <p>We implement industry-standard security measures to protect your sensitive medical information:</p>
+            <ul>
+                <li><span class="highlight">Encryption:</span> All data is encrypted in transit and at rest using
+                    AES-256 encryption</li>
+                <li><span class="highlight">Secure Storage:</span> Medical images are stored in HIPAA-compliant, secure
+                    cloud infrastructure</li>
+                <li><span class="highlight">Access Control:</span> Strict access controls ensure only authorized
+                    personnel can access your data</li>
+                <li><span class="highlight">Data Anonymization:</span> All uploaded images are automatically anonymized
+                    to remove identifying information</li>
+                <li><span class="highlight">Automatic Deletion:</span> X-ray images are automatically deleted after 30
+                    days unless you request otherwise</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-trash-alt"></i>&nbsp;Data Retention & Deletion</h2>
+            <h3>Automatic Deletion</h3>
+            <p>To protect your privacy, we automatically delete your uploaded X-ray images and analysis results after
+                <span class="highlight">30 days</span> from upload.
+            </p>
+
+            <h3>Manual Deletion</h3>
+            <p>You can request immediate deletion of your data at any time by contacting our support team. We will
+                process deletion requests within 48 hours.</p>
+
+            <h3>Research Data</h3>
+            <p>Anonymous, non-identifiable data may be retained for research purposes to improve our diagnostic
+                algorithms. This data cannot be traced back to individual users.</p>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-user-shield"></i>&nbsp;Your Rights & Choices</h2>
+            <p>You have the following rights regarding your medical data:</p>
+            <ul>
+                <li><span class="highlight">Access:</span> Request copies of your uploaded images and analysis results
+                </li>
+                <li><span class="highlight">Deletion:</span> Request immediate deletion of your data</li>
+                <li><span class="highlight">Correction:</span> Request correction of any inaccurate information</li>
+                <li><span class="highlight">Portability:</span> Request transfer of your data to another service</li>
+                <li><span class="highlight">Opt-out:</span> Withdraw consent for data processing at any time</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-share-alt"></i>&nbsp;Information Sharing</h2>
+            <p>We <span class="warning">DO NOT</span> sell, trade, or rent your personal medical information to third
+                parties. Limited sharing may occur in these situations:</p>
+            <ul>
+                <li><span class="highlight">Medical Professionals:</span> With your explicit consent, we may share
+                    results with your healthcare provider</li>
+                <li><span class="highlight">Legal Requirements:</span> When required by law or court order</li>
+                <li><span class="highlight">Emergency Situations:</span> To protect your health and safety in critical
+                    situations</li>
+                <li><span class="highlight">Service Providers:</span> With trusted partners who help us operate our
+                    service (under strict confidentiality agreements)</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-exclamation-triangle"></i>&nbsp;Medical Disclaimer</h2>
+            <div class="important-note">
+                <p><strong>Important Medical Disclaimer:</strong> Our X-ray analysis service is designed to assist in
+                    medical diagnosis but should <span class="warning">NOT</span> be used as a substitute for
+                    professional medical advice, diagnosis, or treatment. Always consult with qualified healthcare
+                    professionals for medical decisions.</p>
+            </div>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-cookie-bite"></i>&nbsp;Cookies & Tracking</h2>
+            <p>We use minimal cookies and tracking technologies:</p>
+            <ul>
+                <li><span class="highlight">Essential Cookies:</span> Required for basic site functionality</li>
+                <li><span class="highlight">Analytics:</span> Anonymous usage statistics to improve our service</li>
+                <li><span class="highlight">Session Management:</span> To maintain your upload session</li>
+            </ul>
+            <p>You can disable cookies in your browser settings, but this may affect site functionality.</p>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-globe"></i>&nbsp;International Data Transfers</h2>
+            <p>Your data may be processed in countries with different privacy laws. We ensure adequate protection
+                through:</p>
+            <ul>
+                <li>Standard contractual clauses</li>
+                <li>Adequacy decisions by regulatory authorities</li>
+                <li>Certified data protection frameworks</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <h2><i class="fas fa-edit"></i>&nbsp;Policy Updates</h2>
+            <p>We may update this Privacy Policy periodically. Significant changes will be communicated through:</p>
+            <ul>
+                <li>Email notifications (if you've provided your email)</li>
+                <li>Website banner notifications</li>
+                <li>Updated "Last Modified" date below</li>
+            </ul>
+        </div>
+
+        <div class="privacy-content">
+            <div class="last-updated">
+                <p>Last updated: July 17, 2025</p>
+                <p>Effective date: July 17, 2025</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
+                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more
+                        accessible and accurate.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/alt-Anurag/XrayBotix" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="mailto:xraybotix@gmail.com" class="social-icon"><i class="fa fa-envelope"
+                                target="_blank" rel="noopener noreferrer"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin" target="_blank"
+                                rel="noopener noreferrer"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-phone"></i> Contact</h3>
+                    <p><i class="fas fa-envelope"></i> xraybotix@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9971291995</p>
+                    <p><i class="fas fa-map-marker-alt"></i> DTU DELHI</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-book"></i> Resources</h3>
+                    <p><a href="tech.html"><i class="fas fa-file-alt"></i> Tech Stack</a></p>
+                    <p><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></p>
+                    <p><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XrayBotix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("floating-bg");
+
+            const isMobile = window.innerWidth < 768;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+            const NUM_BUBBLES = isMobile ? 25 : isTablet ? 60 : 200;
+
+            const PNG_COUNT = 10;
+            const MIN_DISTANCE = 6;
+            const positions = [];
+
+            for (let i = 0; i < NUM_BUBBLES; i++) {
+                let left;
+                let tooClose;
+                let attempts = 0;
+
+                do {
+                    tooClose = false;
+                    left = Math.random() * 100;
+                    for (const pos of positions) {
+                        if (Math.abs(pos - left) < MIN_DISTANCE) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (tooClose && attempts < 20);
+
+                positions.push(left);
+
+                const img = document.createElement("img");
+                const imgNum = Math.floor(Math.random() * PNG_COUNT) + 1;
+
+                const baseSize = isMobile ? 25 : 20;
+                const size = Math.floor(Math.random() * 15 + baseSize); // Slightly larger on mobile
+                const delay = Math.random() * 30;
+                const duration = Math.random() * 9 + 22;
+                const scale = (Math.random() * 0.4 + 0.6).toFixed(1);
+                const opacity = (Math.random() * 0.15 + 0.05).toFixed(3);
+
+                img.src = `pngs_bg/${imgNum}.png`;
+                img.classList.add("float-icon");
+                img.style.width = `${size}px`;
+                img.style.left = `${left}%`;
+                img.style.top = `${Math.random() * 100}%`;
+                img.style.animationDuration = `${duration}s`;
+                img.style.animationDelay = `-${Math.random() * duration}s`;
+                img.style.setProperty("--scale", scale);
+                img.style.setProperty("--opacity", opacity);
+
+                container.appendChild(img);
+            }
+        });
+    </script>
+</body>
+
+</html>

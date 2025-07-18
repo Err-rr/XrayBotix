@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XrayBotix </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .custom-loader {
+            width: 48px;
+            height: 48px;
+            animation: pulseGlow 1.8s infinite;
+            filter: drop-shadow(0 0 7px rgba(43, 186, 72, 0.837));
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+                filter: drop-shadow(0 0 14px rgba(35, 134, 54, 0.9));
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+        }
+    </style>
+
+    <style>
+        :root {
+            --primary-bg: #0d1117;
+            --secondary-bg: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --accent-color: #238636;
+            --accent-hover: #2ea043;
+            --accent-glow: rgba(35, 134, 54, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #218838 !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3 !important;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131a2c;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .fixed-background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(41, 157, 64, 0.353), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(43, 158, 203, 0.484), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .loading-spinner-small {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .loading-spinner-small img {
+            animation: pulseGlow 1.8s infinite;
+            filter: drop-shadow(0 0 3px rgba(43, 186, 72, 0.5));
+        }
+
+        /* Mobile-Navigation */
+        .mobile-nav {
+            display: none;
+            border-radius: 12px 0 0 12px;
+            height: auto;
+            top: 0;
+            bottom: auto;
+            padding-bottom: 2rem
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(22, 27, 34, 0.95);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                z-index: 1001;
+                transition: right 0.3s ease;
+                padding: 1.5rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                display: block;
+            }
+
+            .mobile-nav.active {
+                right: 0;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none !important;
+            }
+
+            .desktop-nav {
+                display: flex !important;
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #58a6ff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            margin-bottom: 6rem;
+            color: #ffffff;
+            text-shadow: 0 4px 2px rgba(18, 126, 34, 0.503);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 510;
+
+        }
+
+        /* --- Glassmorphism Effect --- */
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+        }
+
+        /* --- Header & Navbar --- */
+        .main-header {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .main-header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo svg {
+            width: 24px;
+            height: 24px;
+            fill: #58a6ff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+
+        /* Navigation Styles */
+        .desktop-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        /* Mobile Navigation Styles */
+        @media (max-width: 768px) {
+            .desktop-nav .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-primary);
+            }
+
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: rgba(22, 27, 34, 0.95);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                z-index: 1001;
+                transition: right 0.3s ease;
+                padding: 1.5rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .mobile-nav.active {
+                right: 0;
+                display: block;
+            }
+
+            .mobile-nav-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .menu-close {
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-secondary);
+                transition: color 0.3s ease;
+            }
+
+            .menu-close:hover {
+                color: var(--text-primary);
+            }
+
+            .mobile-nav-links {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0;
+
+            }
+
+            .mobile-nav-links li a {
+                color: var(--text-primary);
+                text-decoration: none;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+                padding: 0.8rem 1rem;
+                border-radius: 0.5rem;
+            }
+
+            .mobile-nav-links li a:hover {
+                background: rgba(88, 166, 255, 0.1);
+                color: #58a6ff;
+            }
+
+            .mobile-nav-links li a i {
+                width: 20px;
+                text-align: center;
+            }
+        }
+
+        /* Desktop Navigation Styles */
+        @media (min-width: 769px) {
+            .menu-toggle {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 1.5rem;
+                list-style: none;
+            }
+
+            .nav-links a {
+                color: var(--text-primary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: color 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            .nav-links a:hover {
+                color: #58a6ff;
+            }
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-links a:hover {
+            color: #58a6ff;
+        }
+
+        #modal-xray-selector {
+            margin-bottom: 1.5rem;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #modal-xray-selector .xray-options {
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        }
+
+        .nav-links a svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #select-next-btn {
+            padding: 0.8rem 1.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 1.5rem auto 0 auto;
+            max-width: 200px;
+            width: 25%;
+        }
+
+
+        @media (max-width: 768px) {
+            #select-next-btn {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        .floating-bg .float-icon {
+            position: absolute;
+            width: 60px;
+            opacity: 0.15;
+            animation: floatUp 25s linear infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+            transform: translateY(0);
+            user-select: none;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.05;
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(1.2);
+                opacity: 0.01;
+            }
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding-top: 169px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeInUp 0.55s ease forwards;
+            position: relative;
+        }
+
+
+        .hero p {
+            max-width: 600px;
+            margin: 1.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 0rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        #typewriter-text::after {
+            content: '|';
+            font-weight: 300;
+            animation: blink 2s infinite;
+            color: #1f6e82;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50%,
+            100% {
+                opacity: 0.8;
+            }
+
+            25%,
+            75% {
+                opacity: 0;
+            }
+        }
+
+        .xray-selector {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            color: var(--text-primary);
+
+            max-width: 1090px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .xray-selector h3 {
+            font-size: 1.2rem;
+            color: #58a6ff;
+            margin-bottom: 1.2rem;
+        }
+
+        .xray-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .xray-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(88, 166, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 1rem 0.8rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .xray-option:hover {
+            background: rgba(88, 166, 255, 0.1);
+            border-color: #58a6ff;
+        }
+
+        .xray-option input[type="radio"] {
+            accent-color: #58a6ff;
+            transform: scale(1.2);
+        }
+
+        #how-it-works {
+            padding: 6rem 0;
+        }
+
+        /* --- Key Features Section --- */
+        #features {
+            padding: 6rem 0;
+        }
+
+        #features.container {
+            padding: 48px 0 0px 0;
+        }
+
+        #how-it-works.container {
+            padding: 48px 0 0 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-tile {
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        }
+
+        .feature-tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-tile .icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1.5rem;
+            color: #58a6ff;
+        }
+
+        .feature-tile h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .feature-tile,
+        .how-step {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        #upload-section {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.55s ease;
+        }
+
+        .upload-container {
+            width: 90%;
+            max-width: 700px;
+            padding: 2rem 2rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        #close-modal-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        #close-modal-btn:hover {
+            color: var(--text-primary);
+        }
+
+        #upload-box {
+            border: 2px dashed var(--border-color);
+            padding: 3rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        #upload-box:hover,
+        #upload-box.dragover {
+            border-color: var(--accent-hover);
+            background-color: rgba(35, 134, 54, 0.1);
+        }
+
+        #upload-box .upload-icon {
+            width: 64px;
+            height: 64px;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        #upload-box h3 {
+            color: var(--text-primary);
+        }
+
+        #file-upload-input {
+            display: none;
+        }
+
+        #preview-box {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        #image-preview {
+            max-width: 100%;
+            max-height: 40vh;
+            border-radius: 8px;
+            object-fit: contain;
+            border: 1px solid var(--border-color);
+        }
+
+        #file-name-display {
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        #analysis-results {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        #analysis-results {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .result-card {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .result-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 4vw, 1.25rem);
+        }
+
+        .result-card p {
+            margin: 0.75rem 0;
+            font-size: clamp(0.875rem, 3vw, 1rem);
+        }
+
+        .result-card ul {
+            list-style-position: inside;
+            padding-left: 0.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .result-card li {
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.875rem, 3vw, 1rem);
+            word-break: break-word;
+        }
+
+        .result-note {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 1rem !important;
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            #upload-container {
+                width: 95vw;
+                max-height: 90vh;
+            }
+
+            #analysis-results {
+                max-height: 75vh;
+                padding: 0.5rem;
+            }
+
+            .result-card {
+                padding: 1rem;
+                margin-top: 0.75rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        #analysis-results::-webkit-scrollbar {
+            width: 4px;
+            background: transparent;
+        }
+
+        #analysis-results::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+        }
+
+        .result-note {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        footer {
+            background: rgba(4, 23, 8, 0.57);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 1rem 1rem 0 0;
+            margin-top: 9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.5rem;
+            margin: -0.3rem -0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .footer-section a:hover i {
+            transform: scale(1.1);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-color), #1e3a8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px var(--accent-glow);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .how-step {
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card-grid-effect::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(88, 255, 255, 0.09) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(88, 255, 255, 0.09) 1px, transparent 1px);
+            background-size: 20px 20px;
+            mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+
+            pointer-events: none;
+            z-index: 0;
+        }
+
+
+        .how-step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                min-height: 100vh;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        #select-next-btn {
+            padding: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #select-next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .float-icon {
+            position: absolute;
+            opacity: 0.03;
+            user-select: none;
+            will-change: transform;
+            animation-name: floatUp;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(var(--scale));
+                opacity: var(--opacity);
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(var(--scale));
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-background-gradient"></div>
+    <!-- Header -->
+    <header class="main-header glass-effect">
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <div class="logo">
+                <i class="fa-solid fa-suitcase-medical"></i>
+                <span style="font-family: 'Montserrat', sans-serif">XrayBotix</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#" id="nav-upload-btn">Upload X-ray</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+
+        <!-- Mobile Navigation, hidden hai by default-->
+        <nav class="mobile-nav">
+            <div class="mobile-nav-header">
+                <div class="logo">
+                    <span>Menu</span>
+                </div>
+                <div class="menu-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                <li><a href="#how-it-works"><i class="fas fa-cogs"></i> How It Works</a></li>
+                <li><a href="#" id="mobile-upload-btn"><i class="fas fa-upload"></i> Upload X-ray</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="floating-bg" id="floating-bg"></div>
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="container hero">
+            <h1 id="typewriter-text"></h1>
+            <p>Upload your X-ray images and get instant AI-powered diagnosis for fractures, lung diseases, and more
+                medical conditions with cutting-edge accuracy.</p>
+            <div class=" cta-buttons">
+                <button class="btn btn-primary" id="main-upload-btn">Upload X-Ray</button>
+                <button class="btn btn-secondary">See Demo</button>
+            </div>
+        </section>
+        <!-- Type of X-ray Selector -->
+
+
+        <!-- Key Features Section -->
+        <section id="features" class="container">
+            <h2>Key Features</h2>
+            <div class="features-grid">
+                <!-- Tile 1 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                    </svg>
+                    <h3>Lightning Fast Results</h3>
+                    <p>Get instant analysis results in under 15 seconds. Our optimized AI processes X-rays with
+                        lightning speed without compromising accuracy.</p>
+                </div>
+                <!-- Tile 2 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20v-4M16 20v-8M8 20v-6M4 20v-4M20 20v-2M12 4V2M16 8V2M8 8V2M4 4V2M20 12V2">
+                        </path>
+                        <rect x="2" y="2" width="20" height="20" rx="2"></rect>
+                    </svg>
+                    <h3>Smartly Trained AI</h3>
+                    <p>Our AI model has been trained and tested rigrously from huge datasets and new data respectievely,
+                        improving its diagnostic
+                        accuracy
+                        and real-time analysis performance.</p>
+                </div>
+                <!-- Tile 3 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <h3>Secure & Private</h3>
+                    <p>Your medical data is protected with utmost priority. We do not store any diagnosis report of
+                        individual in any kind of self- sustained databases.</p>
+                </div>
+                <!-- Tile 4 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                    <h3>Multi-Disease Detection</h3>
+                    <p>Detect fractures, pneumonia, tuberculosis, and dozens of other conditions from a single X-ray
+                        image with high sensitivity and specificity.</p>
+                </div>
+                <!-- Tile 5 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <h3>Detailed Reporting</h3>
+                    <p>Generate comprehensive, easy-to-understand reports highlighting findings, confidence scores,
+                        and
+                        potential areas of concern for clinical review.</p>
+                </div>
+                <!-- Tile 6 -->
+                <div class="feature-tile glass-effect card-grid-effect">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <h3>Specialist Recommendations</h3>
+                    <p>Get your analysis done seamlessly and find the right specialist to consult based on your
+                        condition. Our platform eliminates the hassle of which kind of doctor to see!</p>
+                </div>
+            </div>
+        </section>
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="container">
+            <h2>How It Works</h2>
+            <div class="how-steps">
+                <div class="how-step glass-effect card-grid-effect">
+                    <div class="step-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <h3>Upload X-ray</h3>
+                    <p>Drag and drop your X-ray image or click to upload. We support all major image formats and
+                        ensure
+                        full data security.</p>
+                </div>
+                <div class="how-step glass-effect card-grid-effect">
+                    <div class="step-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Analyzes</h3>
+                    <p>Our AI model, trained on thousands of X-rays, analyzes your image in seconds with high
+                        diagnostic
+                        accuracy.</p>
+                </div>
+                <div class="how-step glass-effect card-grid-effect">
+                    <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Get Diagnosis</h3>
+                    <p>Get detailed analysis including detected conditions, confidence levels, and treatment
+                        suggestions.</p>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Upload Modal & Analysis Results -->
+    <section id="upload-section">
+        <div class="upload-container glass-effect">
+            <button id="close-modal-btn">&times;</button>
+
+            <div class="xray-selector glass-effect" id="modal-xray-selector">
+                <h3><i class="fas fa-list-check"></i> Select X-Ray Type:</h3>
+                <div class="xray-options">
+                    <label class="xray-option">
+                        <input type="radio" name="xray-type" value="chest" checked>
+                        Chest
+                    </label>
+                    <label class="xray-option">
+                        <input type="radio" name="xray-type" value="spine">
+                        Spine
+                    </label>
+                    <label class="xray-option">
+                        <input type="radio" name="xray-type" value="dental">
+                        Dental
+                    </label>
+                    <label class="xray-option">
+                        <input type="radio" name="xray-type" value="skull">
+                        Skull
+                    </label>
+                </div>
+                <button class="btn btn-primary" id="select-next-btn" style="margin-top: 1.5rem;">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <!-- Step 1: Upload Box -->
+            <div id="upload-box">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                <h3>Drop file here or click to upload</h3>
+                <p>Supports: PNG, JPG, BMP, etc.</p>
+                <input type="file" id="file-upload-input" accept="image/png, image/jpeg, image/dicom">
+            </div>
+
+            <!-- Step 2: Image Preview -->
+            <div id="preview-box">
+                <img id="image-preview" src="#" alt="Your uploaded X-ray image" />
+                <p id="file-name-display"></p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" id="analyze-btn">Analyze Image</button>
+                    <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+                </div>
+            </div>
+
+            <div id="loading-spinner" style="display:none; text-align:center; padding: 2rem;">
+                <img src="loader.png" alt="Analyzing..." class="custom-loader" />
+                <p style="margin-top: 1rem;">Running AI diagnosis, Please wait and keep calm...</p>
+            </div>
+
+            <!-- Step 3: Analysis Result -->
+            <div id="analysis-results">
+                <div class="result-card">
+                    <h3 style="color: var(--accent-color);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        Analysis Complete
+                    </h3>
+                    <p id="result-file-name"></p>
+                </div>
+                <div class="result-card">
+                    <h3>Predicted Condition</h3>
+                    <p style="color: #58a6ff; font-weight: 600;">Pneumonia (Left Lung)</p>
+                    <p>Confidence: 94.2%</p>
+                </div>
+                <div class="result-card">
+                    <h3>Suggested Treatment Options</h3>
+                    <ul>
+                        <li>Antibiotic therapy (Amoxicillin or Azithromycin)</li>
+                        <li>Rest and increased fluid intake</li>
+                        <li>Follow-up chest X-ray in 2-3 weeks</li>
+                    </ul>
+                    <p class="result-note">Note: This is a demo result. Always consult with a healthcare professional
+                        for actual diagnosis and treatment.</p>
+                </div>
+                <button class="btn btn-primary" id="close-results-btn" style="margin-top: 1rem;">Close</button>
+            </div>
+
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
+                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more
+                        accessible and accurate.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/alt-Anurag/XrayBotix" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="mailto:xraybotix@gmail.com" class="social-icon"><i class="fa fa-envelope"
+                                target="_blank" rel="noopener noreferrer"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin" target="_blank"
+                                rel="noopener noreferrer"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-phone"></i> Contact</h3>
+                    <p><i class="fas fa-envelope"></i> xraybotix@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9971291995</p>
+                    <p><i class="fas fa-map-marker-alt"></i> DTU DELHI</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-book"></i> Resources</h3>
+                    <p><a href="tech.html"><i class="fas fa-file-alt"></i> Tech Stack</a></p>
+                    <p><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></p>
+                    <p><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XrayBotix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const text = "The Future of X-Ray Analysis driven by AI, Now in Your Palm...";
+        const speed = 15;
+        let i = 0;
+        let lastTime = null;
+
+        function typeWriterSmooth(timestamp) {
+            if (!lastTime) lastTime = timestamp;
+            const elapsed = timestamp - lastTime;
+
+            if (elapsed > speed) {
+                document.getElementById("typewriter-text").textContent += text.charAt(i);
+                i++;
+                lastTime = timestamp;
+            }
+
+            if (i < text.length) {
+                requestAnimationFrame(typeWriterSmooth);
+            }
+        }
+
+        window.onload = () => {
+            requestAnimationFrame(typeWriterSmooth);
+        };
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const uploadSection = document.getElementById('upload-section');
+            const mainUploadBtn = document.getElementById('main-upload-btn');
+            const navUploadBtn = document.getElementById('nav-upload-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const xraySelector = document.getElementById('modal-xray-selector');
+            const uploadBox = document.getElementById('upload-box');
+            const fileInput = document.getElementById('file-upload-input');
+
+            let previewBox = document.getElementById('preview-box');
+            let imagePreview = document.getElementById('image-preview');
+            let fileNameDisplay = document.getElementById('file-name-display');
+            let analyzeBtn = document.getElementById('analyze-btn');
+            let cancelBtn = document.getElementById('cancel-btn');
+
+            const analysisResults = document.getElementById('analysis-results');
+            const resultFileName = document.getElementById('result-file-name');
+            const closeResultsBtn = document.getElementById('close-results-btn');
+
+            let selectedXrayType = 'chest';
+
+            const openUploadModal = () => {
+                uploadSection.style.display = 'flex';
+                resetToUploadStep();
+                xraySelector.style.display = 'block';
+                uploadBox.style.display = 'none';
+
+                previewBox.style.display = 'none';
+                analysisResults.style.display = 'none';
+            };
+
+            const closeUploadModal = () => {
+                uploadSection.style.display = 'none';
+            };
+
+            const processFile = (file) => {
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        imagePreview.src = event.target.result;
+                    }
+                    reader.readAsDataURL(file);
+
+                    fileNameDisplay.textContent = `File: ${file.name}`;
+                    resultFileName.textContent = `File: ${file.name} (${selectedXrayType})`;
+
+                    uploadBox.style.display = 'none';
+                    xraySelector.style.display = 'none';
+                    previewBox.style.display = 'flex';
+                    analysisResults.style.display = 'none';
+                } else {
+                    alert('Please upload a valid image file (PNG, JPG, etc.).');
+                }
+            };
+
+            const handleFileSelect = (e) => {
+                const file = e.target.files[0];
+                processFile(file);
+            };
+
+            const startAnalysis = () => {
+                const img = document.getElementById("image-preview");
+                if (!img || !img.src) {
+                    alert("No image loaded for prediction.");
+                    return;
+                }
+
+                switch (selectedXrayType) {
+                    case "chest":
+                        predictChestFromUpload(img);
+                        break;
+                    case "spine":
+                        predictSpineFromUpload(img);
+                        break;
+                    case "dental":
+                        predictDentalFromUpload(img);
+                        break;
+                    case "skull":
+                        predictSkullFromUpload(img);
+                        break;
+                    default:
+                        alert("Unsupported X-ray type selected.");
+                }
+            };
+
+
+            const resetToUploadStep = () => {
+                uploadBox.style.display = 'none';
+                xraySelector.style.display = 'block';
+                previewBox.style.display = 'none';
+                analysisResults.style.display = 'none';
+
+                previewBox.innerHTML = `
+            <img id="image-preview" src="#" alt="Your uploaded X-ray image" />
+            <p id="file-name-display"></p>
+            <div class="cta-buttons">
+                <button class="btn btn-primary" id="analyze-btn">Analyze Image</button>
+                <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+            </div>`;
+
+                imagePreview = document.getElementById('image-preview');
+                fileNameDisplay = document.getElementById('file-name-display');
+                analyzeBtn = document.getElementById('analyze-btn');
+                cancelBtn = document.getElementById('cancel-btn');
+
+                analyzeBtn.addEventListener('click', startAnalysis);
+                cancelBtn.addEventListener('click', closeUploadModal);
+            };
+
+            // Event listeners for x-ray type selection
+            document.querySelectorAll('input[name="xray-type"]').forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    selectedXrayType = e.target.value;
+                });
+            });
+
+            document.getElementById('select-next-btn').addEventListener('click', () => {
+                xraySelector.style.display = 'none';
+                uploadBox.style.display = 'flex';
+            });
+
+            mainUploadBtn.addEventListener('click', openUploadModal);
+            navUploadBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openUploadModal();
+            });
+
+            uploadSection.addEventListener('click', (e) => {
+                if (e.target === uploadSection) closeUploadModal();
+            });
+            closeModalBtn.addEventListener('click', closeUploadModal);
+            closeResultsBtn.addEventListener('click', closeUploadModal);
+
+            uploadBox.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+
+            uploadBox.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadBox.classList.add('dragover');
+            });
+            uploadBox.addEventListener('dragleave', () => {
+                uploadBox.classList.remove('dragover');
+            });
+            uploadBox.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadBox.classList.remove('dragover');
+                const file = e.dataTransfer.files[0];
+                processFile(file);
+            });
+
+            analyzeBtn.addEventListener('click', startAnalysis);
+            cancelBtn.addEventListener('click', closeUploadModal);
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menuClose = document.querySelector('.menu-close');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const mobileUploadBtn = document.getElementById('mobile-upload-btn');
+            const navUploadBtn = document.getElementById('nav-upload-btn');
+
+
+            function toggleMobileMenu() {
+                mobileNav.classList.toggle('active');
+                document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            }
+
+
+            if (menuToggle) {
+                menuToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (menuClose) {
+                menuClose.addEventListener('click', toggleMobileMenu);
+            }
+
+
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileLinks.forEach(link => {
+                if (!link.id.includes('upload')) {
+                    link.addEventListener('click', toggleMobileMenu);
+                }
+            });
+
+
+            if (mobileUploadBtn) {
+                mobileUploadBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.getElementById('main-upload-btn').click();
+                });
+            }
+
+            if (navUploadBtn) {
+                navUploadBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.getElementById('main-upload-btn').click();
+                });
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("floating-bg");
+
+            const isMobile = window.innerWidth < 768;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+            const NUM_BUBBLES = isMobile ? 25 : isTablet ? 60 : 200;
+
+            const PNG_COUNT = 10;
+            const MIN_DISTANCE = 6;
+            const positions = [];
+
+            for (let i = 0; i < NUM_BUBBLES; i++) {
+                let left;
+                let tooClose;
+                let attempts = 0;
+
+                do {
+                    tooClose = false;
+                    left = Math.random() * 100;
+                    for (const pos of positions) {
+                        if (Math.abs(pos - left) < MIN_DISTANCE) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (tooClose && attempts < 20);
+
+                positions.push(left);
+
+                const img = document.createElement("img");
+                const imgNum = Math.floor(Math.random() * PNG_COUNT) + 1;
+
+                const baseSize = isMobile ? 25 : 20;
+                const size = Math.floor(Math.random() * 15 + baseSize); // Slightly larger on mobile
+                const delay = Math.random() * 30;
+                const duration = Math.random() * 9 + 22;
+                const scale = (Math.random() * 0.5 + 0.7).toFixed(2);
+                const opacity = (Math.random() * 0.15 + 0.05).toFixed(3);
+
+                img.src = `pngs_bg/${imgNum}.png`;
+                img.classList.add("float-icon");
+                img.style.width = `${size}px`;
+                img.style.left = `${left}%`;
+                img.style.top = `${Math.random() * 100}%`;
+                img.style.animationDuration = `${duration}s`;
+                img.style.animationDelay = `-${Math.random() * duration}s`;
+                img.style.setProperty("--scale", scale);
+                img.style.setProperty("--opacity", opacity);
+
+                container.appendChild(img);
+            }
+        });
+    </script>
+    <!-- loading imp libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- sourcing tm model .js code -->
+    <script src="/models/predict_chest.js"></script>
+    <script src="/models/predict_dental.js"></script>
+    <script src="/models/predict_spine.js"></script>
+    <script src="/models/predict_skull.js"></script>
+
+</body>
+
+</html>

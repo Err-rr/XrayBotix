@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XrayBotix - FAQ</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .custom-loader {
+            width: 48px;
+            height: 48px;
+            animation: pulseGlow 1.8s infinite;
+            filter: drop-shadow(0 0 7px rgba(43, 186, 72, 0.837));
+        }
+
+        .floating-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .float-icon {
+            position: absolute;
+            opacity: 0.03;
+            user-select: none;
+            will-change: transform;
+            animation-name: floatUp;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            filter: drop-shadow(0 0 10px rgba(88, 166, 255, 0.1));
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(var(--scale));
+                opacity: var(--opacity);
+            }
+
+            100% {
+                transform: translateY(-120vh) scale(var(--scale));
+                opacity: 0;
+            }
+        }
+
+        .card-grid-effect::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(88, 255, 255, 0.09) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(88, 255, 255, 0.09) 1px, transparent 1px);
+            background-size: 20px 20px;
+            mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 1) 25%,
+                    rgba(0, 0, 0, 0.6) 40%,
+                    rgba(0, 0, 0, 0) 100%);
+
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+                filter: drop-shadow(0 0 14px rgba(35, 134, 54, 0.9));
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0.9;
+                filter: drop-shadow(0 0 7px rgba(35, 134, 54, 0.7));
+            }
+        }
+
+        :root {
+            --primary-bg: #0d1117;
+            --secondary-bg: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #7d8590;
+            --accent-color: #238636;
+            --accent-hover: #2ea043;
+            --accent-glow: rgba(35, 134, 54, 0.4);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #131a2c;
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .fixed-background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image:
+                radial-gradient(circle at 20% 20%, rgba(41, 157, 64, 0.353), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(43, 158, 203, 0.484), transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            color: #58a6ff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-top: 4rem;
+            margin-bottom: 6rem;
+            color: #ffffff;
+            text-shadow: 0 4px 2px rgba(18, 126, 34, 0.503);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 510;
+        }
+
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 1rem;
+        }
+
+        /* Custom FAQ Styles */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.2), rgba(35, 134, 54, 0.2));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .home-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 166, 255, 0.3);
+            background: linear-gradient(135deg, rgba(88, 166, 255, 0.3), rgba(35, 134, 54, 0.3));
+        }
+
+        .home-button i {
+            font-size: 16px;
+        }
+
+        .faq-hero {
+            text-align: center;
+            margin-top: 80px;
+            margin-bottom: 4rem;
+        }
+
+        .faq-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-categories {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .category-card {
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(88, 166, 255, 0.3);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #58a6ff, #2ea043);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-section {
+            margin-bottom: 3rem;
+        }
+
+        .faq-section h2 {
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            color: #77acea;
+        }
+
+        .faq-item {
+            background: rgba(30, 41, 59, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(88, 166, 255, 0.3);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .faq-question i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            color: #58a6ff;
+        }
+
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: rgba(22, 27, 34, 0.5);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 1.5rem;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .warning {
+            color: #f85149;
+            font-weight: 500;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .home-button {
+                top: 15px;
+                left: 15px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .home-button i {
+                font-size: 14px;
+            }
+
+            .faq-hero {
+                margin-top: 70px;
+            }
+
+            .faq-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .faq-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-categories .category-card:first-child,
+            .faq-categories .category-card:nth-child(2),
+            .faq-categories .category-card:nth-child(3),
+            .faq-categories .category-card:nth-child(4) {
+                grid-column: 1;
+                grid-row: auto;
+            }
+
+            .category-card {
+                padding: 1.5rem;
+            }
+
+            .faq-question {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+
+            .faq-answer.active {
+                padding: 1rem;
+            }
+        }
+
+        footer {
+            background: rgba(4, 23, 8, 0.57);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 1rem 1rem 0 0;
+            margin-top: 9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-section a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 0.5rem;
+            padding: 0.3rem 0.5rem;
+            margin: -0.3rem -0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+            background: rgba(88, 166, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .footer-section a:hover i {
+            transform: scale(1.1);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.2rem;
+        }
+
+        .social-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--accent-color), #1e3a8a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px var(--accent-glow);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px var(--accent-glow);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-background-gradient"></div>
+    <div class="floating-bg" id="floating-bg"></div>
+
+
+    <a href="index.html" class="home-button">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </a>
+
+    <div class="container">
+        <div class="faq-hero">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about XrayBotix and it's AI-powered X-ray analysis system.</p>
+        </div>
+
+        <div class="faq-categories">
+            <div class="category-card card-grid-effect" onclick="scrollToSection('general')">
+                <div class="category-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="category-title">General Information</div>
+                <div class="category-description">Basic information about XrayBotix and how it works</div>
+            </div>
+
+            <div class="category-card card-grid-effect" onclick="scrollToSection('xray-types')">
+                <div class="category-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="category-title">X-ray Types</div>
+                <div class="category-description">Supported X-ray types and analysis capabilities</div>
+            </div>
+
+            <div class="category-card card-grid-effect" onclick="scrollToSection('analysis')">
+                <div class="category-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="category-title">Analysis & Results</div>
+                <div class="category-description">Understanding your analysis results and recommendations</div>
+            </div>
+
+            <div class="category-card card-grid-effect" onclick="scrollToSection('technical')">
+                <div class="category-icon">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="category-title">Technical Support</div>
+                <div class="category-description">Technical questions and troubleshooting</div>
+            </div>
+        </div>
+
+        <div class="faq-section" id="general">
+            <h2><i class="fas fa-info-circle"></i>&nbsp; General Information</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What is XrayBotix?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>XrayBotix is an <span class="highlight">AI-powered medical imaging analysis platform</span> that
+                        helps healthcare professionals and patients understand X-ray images. Our advanced machine
+                        learning algorithms can detect fractures, analyze bone conditions, and provide detailed insights
+                        about various medical conditions visible in X-ray scans.</p>
+                    <p>The system is designed to assist in medical diagnosis by providing <span class="highlight">fast,
+                            accurate, and detailed analysis</span> of X-ray images across multiple body parts including
+                        chest, hands, legs, spine, and dental regions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    How accurate is XrayBotix?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>XrayBotix uses <span class="highlight">state-of-the-art deep learning models</span> trained on
+                        thousands of medical images with an accuracy rate of over 95% for fracture detection and 92% for
+                        disease identification.</p>
+                    <p><span class="warning">Important:</span> While our AI provides highly accurate analysis, it should
+                        always be used as a <span class="highlight">supplementary tool</span> alongside professional
+                        medical consultation. Always consult with qualified healthcare professionals for final diagnosis
+                        and treatment decisions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Is my medical data secure?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, we take medical data security very seriously. All uploaded X-ray images are:</p>
+                    <ul>
+                        <li><span class="highlight">Encrypted</span> during transmission and storage</li>
+                        <li><span class="highlight">HIPAA compliant</span> and follow medical data protection standards
+                        </li>
+                        <li><span class="highlight">Automatically deleted</span> after 24 hours unless you choose to
+                            save them</li>
+                        <li><span class="highlight">Never shared</span> with third parties without explicit consent</li>
+                        <li>Processed on <span class="highlight">secure servers</span> with advanced cybersecurity
+                            measures</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section" id="xray-types">
+            <h2><i class="fas fa-brain"></i>&nbsp; X-ray Types & Analysis</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What types of X-rays does XrayBotix support?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>XrayBotix currently supports analysis for the following X-ray types:</p>
+                    <ul>
+                        <li><span class="highlight">Chest X-rays:</span> Lung conditions, pneumonia, fractures, heart
+                            abnormalities</li>
+                        <li><span class="highlight">Hand X-rays:</span> Finger fractures, wrist injuries, arthritis,
+                            bone deformities</li>
+                        <li><span class="highlight">Leg X-rays:</span> Femur, tibia, fibula fractures, knee joint issues
+                        </li>
+                        <li><span class="highlight">Spine X-rays:</span> Vertebral fractures, scoliosis, disc problems
+                        </li>
+                        <li><span class="highlight">Dental X-rays:</span> Tooth decay, root issues, jaw problems,
+                            impacted teeth</li>
+                    </ul>
+                    <p>Each type uses specialized AI models trained specifically for that anatomical region.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What file formats are supported?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>XrayBotix supports the following image formats:</p>
+                    <ul>
+                        <li><span class="highlight">DICOM files</span> (.dcm) - Medical imaging standard</li>
+                        <li><span class="highlight">JPEG images</span> (.jpg, .jpeg) - Common format</li>
+                        <li><span class="highlight">PNG images</span> (.png) - High quality format</li>
+                        <li><span class="highlight">TIFF images</span> (.tiff, .tif) - Medical grade quality</li>
+                    </ul>
+                    <p>Maximum file size: <span class="highlight">50MB per image</span>. For best results, use
+                        high-resolution images with good contrast.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What types of fractures can be detected?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Our AI can detect and classify various types of fractures including:</p>
+                    <ul>
+                        <li><span class="highlight">Simple fractures:</span> Clean break in the bone</li>
+                        <li><span class="highlight">Compound fractures:</span> Bone breaks through the skin</li>
+                        <li><span class="highlight">Hairline fractures:</span> Small cracks in the bone</li>
+                        <li><span class="highlight">Comminuted fractures:</span> Bone breaks into multiple pieces</li>
+                        <li><span class="highlight">Stress fractures:</span> Small cracks from repeated stress</li>
+                        <li><span class="highlight">Displaced fractures:</span> Bone pieces are misaligned</li>
+                    </ul>
+                    <p>The system also provides <span class="highlight">severity assessment</span> and <span
+                            class="highlight">healing recommendations</span> for each detected fracture.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section" id="analysis">
+            <h2><i class="fas fa-search"></i>&nbsp; Analysis & Results</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    How long does analysis take?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Analysis time depends on the complexity and type of X-ray:</p>
+                    <ul>
+                        <li><span class="highlight">Simple fracture detection:</span> 15-30 seconds</li>
+                        <li><span class="highlight">Comprehensive analysis:</span> 1-2 minutes</li>
+                        <li><span class="highlight">Complex cases:</span> 2-5 minutes</li>
+                        <li><span class="highlight">Batch processing:</span> 3-10 minutes per image</li>
+                    </ul>
+                    <p>Our AI continuously processes in the background and provides <span class="highlight">real-time
+                            progress updates</span> during analysis.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What information is provided in the analysis report?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Each analysis report includes:</p>
+                    <ul>
+                        <li><span class="highlight">Detected conditions:</span> Fractures, diseases, abnormalities</li>
+                        <li><span class="highlight">Severity assessment:</span> Mild, moderate, or severe</li>
+                        <li><span class="highlight">Location mapping:</span> Precise anatomical locations</li>
+                        <li><span class="highlight">Confidence scores:</span> AI certainty levels</li>
+                        <li><span class="highlight">Recommended actions:</span> Immediate care, specialist referral</li>
+                        <li><span class="highlight">Visual annotations:</span> Highlighted areas of concern</li>
+                        <li><span class="highlight">Comparison data:</span> Normal vs. abnormal findings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What should I do if a fracture is detected?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>If XrayBotix detects a fracture, follow these steps:</p>
+                    <ul>
+                        <li><span class="highlight">Immediate care:</span> If severe, seek emergency medical attention
+                        </li>
+                        <li><span class="highlight">Consult a doctor:</span> Schedule appointment with orthopedic
+                            specialist</li>
+                        <li><span class="highlight">Follow recommendations:</span> Review the specific action plan
+                            provided</li>
+                        <li><span class="highlight">Monitor symptoms:</span> Watch for pain, swelling, or mobility
+                            issues</li>
+                        <li><span class="highlight">Download report:</span> Save the analysis for medical consultation
+                        </li>
+                    </ul>
+                    <p><span class="warning">Remember:</span> This AI analysis is a screening tool. Always consult with
+                        qualified medical professionals for proper diagnosis and treatment.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section" id="technical">
+            <h2><i class="fas fa-cogs"></i>&nbsp; Technical Support</h2>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What if my X-ray image is not clear enough?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>For optimal results, your X-ray image should be:</p>
+                    <ul>
+                        <li><span class="highlight">High resolution:</span> At least 1024x1024 pixels</li>
+                        <li><span class="highlight">Good contrast:</span> Clear differentiation between bone and soft
+                            tissue</li>
+                        <li><span class="highlight">Proper positioning:</span> Anatomical structure clearly visible</li>
+                        <li><span class="highlight">No artifacts:</span> Minimal noise or distortion</li>
+                    </ul>
+                    <p>If image quality is poor, our AI will provide <span class="highlight">quality assessment
+                            feedback</span> and suggest improvements for better analysis.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Can I analyze multiple X-rays at once?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes! XrayBotix supports <span class="highlight">batch processing</span> for multiple X-ray
+                        images:</p>
+                    <ul>
+                        <li><span class="highlight">Upload limit:</span> Up to 10 images per session</li>
+                        <li><span class="highlight">Mixed types:</span> Different body parts in same batch</li>
+                        <li><span class="highlight">Parallel processing:</span> Faster analysis for multiple images</li>
+                        <li><span class="highlight">Comparative analysis:</span> Side-by-side results</li>
+                        <li><span class="highlight">Bulk download:</span> All reports in single ZIP file</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    What browsers are supported?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>XrayBotix works on all modern browsers:</p>
+                    <ul>
+                        <li><span class="highlight">Chrome:</span> Version 90 and above</li>
+                        <li><span class="highlight">Firefox:</span> Version 88 and above</li>
+                        <li><span class="highlight">Safari:</span> Version 14 and above</li>
+                        <li><span class="highlight">Edge:</span> Version 90 and above</li>
+                        <li><span class="highlight">Mobile browsers:</span> iOS Safari, Chrome Mobile</li>
+                    </ul>
+                    <p>For best performance, we recommend using the <span class="highlight">latest version</span> of
+                        your preferred browser with JavaScript enabled.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFAQ(this)">
+                    Is there a mobile app available?
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Currently, XrayBotix is available as a <span class="highlight">web-based application</span> that
+                        works seamlessly on mobile devices through your browser.</p>
+                    <p>Native mobile apps are <span class="highlight">coming soon</span> for both iOS and Android
+                        platforms with additional features like:</p>
+                    <ul>
+                        <li>Direct camera integration for X-ray capture</li>
+                        <li>Offline analysis capabilities</li>
+                        <li>Push notifications for results</li>
+                        <li>Enhanced mobile-optimized interface</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fa-solid fa-suitcase-medical"></i> XrayBotix</h3>
+                    <p>Revolutionizing medical diagnosis with AI-powered X-ray analysis. Making healthcare more
+                        accessible and accurate.</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/alt-Anurag/XrayBotix" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="mailto:xraybotix@gmail.com" class="social-icon"><i class="fa fa-envelope"
+                                target="_blank" rel="noopener noreferrer"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin" target="_blank"
+                                rel="noopener noreferrer"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-phone"></i> Contact</h3>
+                    <p><i class="fas fa-envelope"></i> xraybotix@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 9971291995</p>
+                    <p><i class="fas fa-map-marker-alt"></i> DTU DELHI</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-book"></i> Resources</h3>
+                    <p><a href="tech.html"><i class="fas fa-file-alt"></i> Tech Stack</a></p>
+                    <p><a href="faq.html"><i class="fas fa-question-circle"></i> FAQ</a></p>
+                    <p><a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 XrayBotix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('i');
+
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                    item.previousElementSibling.classList.remove('active');
+                }
+            });
+
+            // Toggle current item
+            answer.classList.toggle('active');
+            button.classList.toggle('active');
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Add smooth scrolling for category cards
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function () {
+                const targetId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+                scrollToSection(targetId);
+            });
+        });
+
+        // Add keyboard navigation for FAQ items
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const focusedElement = document.activeElement;
+                if (focusedElement.classList.contains('faq-question')) {
+                    e.preventDefault();
+                    toggleFAQ(focusedElement);
+                }
+            }
+        });
+
+        // Add accessibility attributes
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.setAttribute('aria-expanded', 'false');
+            button.setAttribute('tabindex', '0');
+        });
+
+        // Update aria-expanded when FAQ is toggled
+        const originalToggleFAQ = toggleFAQ;
+        toggleFAQ = function (button) {
+            originalToggleFAQ(button);
+            const isExpanded = button.classList.contains('active');
+            button.setAttribute('aria-expanded', isExpanded.toString());
+        };
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("floating-bg");
+
+            const isMobile = window.innerWidth < 768;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+            const NUM_BUBBLES = isMobile ? 25 : isTablet ? 60 : 200;
+
+            const PNG_COUNT = 10;
+            const MIN_DISTANCE = 6;
+            const positions = [];
+
+            for (let i = 0; i < NUM_BUBBLES; i++) {
+                let left;
+                let tooClose;
+                let attempts = 0;
+
+                do {
+                    tooClose = false;
+                    left = Math.random() * 100;
+                    for (const pos of positions) {
+                        if (Math.abs(pos - left) < MIN_DISTANCE) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (tooClose && attempts < 20);
+
+                positions.push(left);
+
+                const img = document.createElement("img");
+                const imgNum = Math.floor(Math.random() * PNG_COUNT) + 1;
+
+                const baseSize = isMobile ? 25 : 20;
+                const size = Math.floor(Math.random() * 15 + baseSize); // Slightly larger on mobile
+                const delay = Math.random() * 30;
+                const duration = Math.random() * 9 + 22;
+                const scale = (Math.random() * 0.4 + 0.6).toFixed(1);
+                const opacity = (Math.random() * 0.15 + 0.05).toFixed(3);
+
+                img.src = `pngs_bg/${imgNum}.png`;
+                img.classList.add("float-icon");
+                img.style.width = `${size}px`;
+                img.style.left = `${left}%`;
+                img.style.top = `${Math.random() * 100}%`;
+                img.style.animationDuration = `${duration}s`;
+                img.style.animationDelay = `-${Math.random() * duration}s`;
+                img.style.setProperty("--scale", scale);
+                img.style.setProperty("--opacity", opacity);
+
+                container.appendChild(img);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
