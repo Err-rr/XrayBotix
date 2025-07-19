@@ -2,7 +2,7 @@
 
 > **AI-Powered X-ray Diagnosis in Seconds**
 
-**Live Demo**: [xraybotix.netlify.app](https://xraybotix.netlify.app)
+**Live Demo**: [xraybotix.netlify.app](https://xraybotixai.netlify.app/)
 **Repo**: [github.com/Err-rr/XrayBotix](https://github.com/Err-rr/XrayBotix)
 
 ---
